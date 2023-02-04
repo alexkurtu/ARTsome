@@ -47,10 +47,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_04_153902) do
     t.integer "rating"
     t.string "comment"
     t.bigint "user_id", null: false
-    t.bigint "booking_id", null: false
+    t.bigint "art_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["booking_id"], name: "index_reviews_on_booking_id"
+    t.index ["art_id"], name: "index_reviews_on_art_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -75,6 +75,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_04_153902) do
   add_foreign_key "arts", "users"
   add_foreign_key "bookings", "arts"
   add_foreign_key "bookings", "users"
-  add_foreign_key "reviews", "bookings"
+  add_foreign_key "reviews", "arts"
   add_foreign_key "reviews", "users"
 end
