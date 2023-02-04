@@ -10,8 +10,65 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 0) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_04_152406) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
+  create_table "arts", force: :cascade do |t|
+    t.string "category"
+    t.string "title"
+    t.text "description"
+    t.string "picture"
+    t.string "artist"
+    t.integer "year"
+    t.string "current_location"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_arts_on_user_id"
+  end
+
+  create_table "bookings", force: :cascade do |t|
+    t.date "offer_date"
+    t.float "price"
+    t.integer "rent_type"
+    t.date "start_date"
+    t.date "end_date"
+    t.string "shipping_address"
+    t.bigint "user_id", null: false
+    t.bigint "art_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["art_id"], name: "index_bookings_on_art_id"
+    t.index ["user_id"], name: "index_bookings_on_user_id"
+  end
+
+  create_table "reviews", force: :cascade do |t|
+    t.integer "rating"
+    t.string "comment"
+    t.bigint "user_id", null: false
+    t.bigint "booking_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["booking_id"], name: "index_reviews_on_booking_id"
+    t.index ["user_id"], name: "index_reviews_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "email"
+    t.string "avatar"
+    t.string "address"
+    t.text "bio"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "arts", "users"
+  add_foreign_key "bookings", "arts"
+  add_foreign_key "bookings", "users"
+  add_foreign_key "reviews", "bookings"
+  add_foreign_key "reviews", "users"
 end
