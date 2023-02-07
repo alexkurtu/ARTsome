@@ -27,7 +27,7 @@ class ArtsController < ApplicationController
   def update
     @art = Art.find(params[:id])
     @art.update(art_params)
-    redirect_to arts_path(@art)
+    redirect_to art_path(@art)
   end
 
   def destroy
@@ -40,6 +40,6 @@ class ArtsController < ApplicationController
   private
 
   def art_params
-    params.require(:art).permit(:title, :category, :description, :picture, :artist, :year, :current_location)
+    params.require(:art).permit(:title, :category, :description, :artist, :year, :current_location, photos: [])
   end
 end
