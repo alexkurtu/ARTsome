@@ -13,6 +13,8 @@ class ArtsController < ApplicationController
 
   def create
     @art = Art.new(art_params)
+    @user = current_user
+    @art.user = @user
     if @art.save
       redirect_to arts_path(@art)
     else
@@ -26,8 +28,13 @@ class ArtsController < ApplicationController
 
   def update
     @art = Art.find(params[:id])
-    @art.update(art_params)
-    redirect_to art_path(@art)
+
+    if @art.user == current_user
+      @art.update(art_params)
+      redirect_to arts_path(@art)
+    else
+      render :edit, status: :unprocessable_entity
+    end
   end
 
   def destroy
