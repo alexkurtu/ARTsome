@@ -8,14 +8,15 @@
 
 puts "Creating user"
 
+user = User.create!(email: "user@example.com", password: "123456")
+
 puts "destroying existing data"
 
 Art.destroy_all
 
 puts "preparing to seed the database"
 
-Art.create!(
-  user_id: 1,
+art = Art.new(
   category: Faker::Commerce.department,
   title: Faker::Commerce.product_name,
   description: Faker::Movies::StarWars.quote,
@@ -24,9 +25,10 @@ Art.create!(
   year: rand(1500..2023),
   current_location: "Berlin, Germany"
 )
+art.user = user
+art.save!
 
-Art.create!(
-  user_id: 1,
+art = Art.new(
   category: Faker::Commerce.department,
   title: Faker::Commerce.product_name,
   description: Faker::Movies::StarWars.quote,
@@ -36,7 +38,10 @@ Art.create!(
   current_location: "Madrid, Spain"
 )
 
-Art.create!(
+art.user = user
+art.save!
+
+art = Art.new(
   user_id: 1,
   category: Faker::Commerce.department,
   title: Faker::Commerce.product_name,
@@ -47,7 +52,10 @@ Art.create!(
   current_location: "Amsterdam, Netherlands"
 )
 
-Art.create!(
+art.user = user
+art.save!
+
+art = Art.new(
   user_id: 1,
   category: Faker::Commerce.department,
   title: Faker::Commerce.product_name,
@@ -58,7 +66,10 @@ Art.create!(
   current_location: "London, UK"
 )
 
-Art.create!(
+art.user = user
+art.save!
+
+art = Art.new(
   user_id: 1,
   category: Faker::Commerce.department,
   title: Faker::Commerce.product_name,
@@ -68,5 +79,8 @@ Art.create!(
   year: rand(1500..2023),
   current_location: "Berlin, Germany"
 )
+
+art.user = user
+art.save!
 
 puts "created #{Art.count} arts"
