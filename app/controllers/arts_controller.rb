@@ -13,8 +13,7 @@ class ArtsController < ApplicationController
 
   def create
     @art = Art.new(art_params)
-    @user = current_user
-    @art.user = @user
+    @art.user = current_user
     if @art.save
       redirect_to arts_path(@art)
     else
