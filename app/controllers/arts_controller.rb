@@ -1,4 +1,5 @@
 class ArtsController < ApplicationController
+  before_action :authenticate_user!
   def index
     @arts = Art.all
   end
