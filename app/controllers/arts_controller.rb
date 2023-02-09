@@ -40,7 +40,6 @@ class ArtsController < ApplicationController
     @art = Art.find(params[:id])
     @art.destroy
     redirect_to arts_path, status: :see_other
-
   end
 
   private

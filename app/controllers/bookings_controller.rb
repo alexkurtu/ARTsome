@@ -2,13 +2,14 @@ class BookingsController < ApplicationController
   # before_action :authenticate_user!
   def new
     @art = Art.find(params[:art_id])
-    @art.user = current_user
+    # @art.user = current_user
     @booking = Booking.new
   end
 
   def create
+    @art = Art.find(params[:art_id])
     @booking = Booking.new(bookings_params)
-    @booking.art = Art.find(params[:art_id])
+    @booking.art = @art
     @booking.user = current_user
 
     if booking.save

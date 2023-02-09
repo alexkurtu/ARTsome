@@ -1,14 +1,11 @@
 <h1>NEW BOOKING</h1>
 
-<%= simple_form_for(@booking) do |f| %>
-  <!-- [...] -->
+<%= simple_form_for(@booking, @art) do |f| %>
   <%= f.input :offer_date %>
   <%= f.input :price %>
   <%= f.input :rent_type %>
   <%= f.input :start_date %>
   <%= f.input :end_date %>
   <%= f.input :shipping_address %>
-
-  <!-- [...] -->
   <%= f.submit %>
 <% end %>
