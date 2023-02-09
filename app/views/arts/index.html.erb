@@ -1,1 +1,13 @@
 <h1>arts-index</h1>
+
+<ul>
+<li> <% @arts.each do |art| %> </li>
+<li> <%= art.title %> </li>
+<li> <%= art.description %> </li>
+<li> <%= art.category %> </li>
+<li> <img src= <%= art.picture %> /> </li>
+<li> <%= art.artist %> </li>
+<li> <%= art.year %> </li>
+<li><%= art.current_location %> </li>
+<%end %>
+</ul>

@@ -75,10 +75,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_191034) do
     t.integer "rating"
     t.string "comment"
     t.bigint "user_id", null: false
-    t.bigint "booking_id", null: false
+    t.bigint "art_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["booking_id"], name: "index_reviews_on_booking_id"
+    t.index ["art_id"], name: "index_reviews_on_art_id"
     t.index ["user_id"], name: "index_reviews_on_user_id"
   end
 
@@ -86,12 +86,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_191034) do
     t.string "username"
     t.string "first_name"
     t.string "last_name"
+    t.string "email"
     t.string "avatar"
     t.string "address"
     t.text "bio"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
     t.string "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -105,6 +105,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_07_191034) do
   add_foreign_key "arts", "users"
   add_foreign_key "bookings", "arts"
   add_foreign_key "bookings", "users"
-  add_foreign_key "reviews", "bookings"
+  add_foreign_key "reviews", "arts"
   add_foreign_key "reviews", "users"
 end
