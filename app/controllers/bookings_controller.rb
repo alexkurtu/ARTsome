@@ -12,7 +12,7 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.status = "Pending host validation"
     if @booking.ends_at && @booking.starts_at
-      @booking.value = (booking.ends_at - @booking.starts_at).to_f * @booking.bed.price.to_f
+      @booking.value = (booking.ends_at - @booking.starts_at).to_f * @booking.art.price.to_f
     else
       @booking.value = 0
     end

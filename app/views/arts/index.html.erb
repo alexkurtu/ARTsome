@@ -32,9 +32,8 @@
         <% @arts.each do |art| %>
         <div class="col">
           <div class="card shadow-sm">
-            <% unless art.photos.empty? %>
-              <img src="<%= cl_image_path art.photos.first.key, height: 300, width: 400, crop: :fill %>" class="card-img-top" alt="...">
-            <% end %>
+            <img src="<%= art.picture%>" class="card-img-top" alt="...">
+
             <div class="card-body">
               <h5 class="card-title"><%= art.title %></h5>
               <p class="card-text"><%= art.description %></p>
@@ -45,6 +44,7 @@
               <li class="list-group-item"><strong>Artist: </strong><%= art.artist %></li>
               <li class="list-group-item"><strong>Year: </strong><%= art.year %></li>
               <li class="list-group-item"><strong>Location: </strong><%= art.current_location %></li>
+              <li class="list-group-item"><strong>Location: </strong><%= art.price %></li>
             </ul>
           </div>
         </div>

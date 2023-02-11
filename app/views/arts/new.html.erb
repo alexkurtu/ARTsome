@@ -4,8 +4,9 @@
   <%= f.input :description %>
   <%= f.input :artist %>
   <%= f.input :current_location %>
-  <%= f.input :year %>
+  <%= f.input :year, placeholder: "2022", input_html: { maxlength: 4 } %>
   <%= f.input :category, collection: [ 'Watercolor Art', 'Oil Paintings', 'Acrylic Paintings', 'Photography', 'Digital Art', 'Street Art', 'Sculpture', 'Mosaic Art', 'Collage Art', 'Mixed Media Art' ], :prompt => 'Select Category' %>
+  <%= f.input :price, placeholder: "€" %>
   <%= f.input :photos, as: :file, input_html: { multiple: true } %>
   <%= f.submit %>
 <% end %>
