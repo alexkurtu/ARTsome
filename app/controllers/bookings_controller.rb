@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
   def new
     @art = Art.find(params[:art_id])
     @booking = Booking.new
+
   end
 
   def create
@@ -31,6 +32,13 @@ class BookingsController < ApplicationController
   def show
     set_booking
     @art = @booking.art
+
+    @markers =[
+      {
+        lat: @booking.latitude,
+        lng: @booking.longitude
+      }
+    ]
   end
 
   def update
