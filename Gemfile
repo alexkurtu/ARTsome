@@ -80,3 +80,4 @@ gem "devise"
 gem "faker"
 gem "httparty"
 gem "cloudinary"
+gem 'validates_overlap'

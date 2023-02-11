@@ -24,7 +24,7 @@
         <p class="card-artist"><%= art.artist %></p>
         <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group">
-            <button type="button" class="btn btn-primary ">View</button>
+            <%= link_to "View", art_path(art.id), class: "btn btn-primary" %>
             <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
           </div>
         </div>
@@ -33,4 +33,3 @@
   </div>
     <%end %>
 </div>
-
