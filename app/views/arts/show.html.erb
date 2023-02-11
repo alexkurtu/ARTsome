@@ -1,28 +1,29 @@
 
+<div
+  class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white"
+    style="
+      background-image: url(<%= @art.picture%>);
+      width: auto;
+      height: 100vh;
+      background-size: cover;
+      repeat: no-repeat;">
 
-<div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
-    <div class="col-md-5 p-lg-5 mx-auto my-5">
-      <h1 class="display-4 fw-normal"><%= @art.title %></h1>
-      <p class="lead fw-normal">And an even wittier subheading to boot. Jumpstart your marketing efforts with this example based on Apple’s marketing pages.</p>
-      <a class="btn btn-outline-secondary" href="#">Coming soon</a>
+    <div class="col-md-6 p-lg-5 mx-auto my-5">
+      <h1 class="display-4 fw-bold"><%= @art.title %></h1>
+      <p class="lead fw-normal"><%= @art.artist %></p>
+      <p class="lead fw-normal"><%= @art.year %></p>
+    </div>
+</div>
+
+<div class="position-relative overflow-hidden p-5 p-md-5 m-md-5 text-center bg-light">
+    <div class="col-md-auto p-lg-auto mx-auto my-auto">
+      <p class="display-4 fw-normal"><%= @art.description%></p>
+      <p class="lead fw-normal"><%= @art.category %></p>
+      <p class="lead fw-normal">Current Location: <%= @art.current_location %></p>
+      <p class="lead fw-normal">€ <%= @art.price.to_i %>/day</p>
+      <a class="btn btn-outline-secondary" <%= link_to "Book Now", new_art_booking_path(@art)%></a>
     </div>
     <div class="product-device shadow-sm d-none d-md-block"></div>
     <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
   </div>
 
-  <div class="d-md-flex flex-md-equal w-100 my-md-3 ps-md-3">
-    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 p-3">
-        <h2 class="display-5">Another headline</h2>
-        <p class="lead">And an even wittier subheading.</p>
-      </div>
-      <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-    </div>
-    <div class="bg-light me-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center overflow-hidden">
-      <div class="my-3 py-3">
-        <h2 class="display-5">Another headline</h2>
-        <p class="lead">And an even wittier subheading.</p>
-      </div>
-      <div class="bg-body shadow-sm mx-auto" style="width: 80%; height: 300px; border-radius: 21px 21px 0 0;"></div>
-    </div>
-  </div>
