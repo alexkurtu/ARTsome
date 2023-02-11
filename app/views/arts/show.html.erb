@@ -16,14 +16,13 @@
 </div>
 
 <div class="position-relative overflow-hidden p-5 p-md-5 m-md-5 text-center bg-light">
-    <div class="col-md-auto p-lg-auto mx-auto my-auto">
-      <p class="display-4 fw-normal"><%= @art.description%></p>
-      <p class="lead fw-normal"><%= @art.category %></p>
-      <p class="lead fw-normal">Current Location: <%= @art.current_location %></p>
-      <p class="lead fw-normal">€ <%= @art.price.to_i %>/day</p>
-      <a class="btn btn-outline-secondary" <%= link_to "Book Now", new_art_booking_path(@art)%></a>
-    </div>
-    <div class="product-device shadow-sm d-none d-md-block"></div>
-    <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+  <div class="col-md-auto p-lg-auto mx-auto my-auto">
+    <p class="display-4 fw-normal"><%= @art.description%></p>
+    <p class="lead fw-normal"><%= @art.category %></p>
+    <p class="lead fw-normal">Current Location: <%= @art.current_location %></p>
+    <p class="lead fw-normal">€ <%= @art.price.to_i %>/day</p>
+    <a class="btn btn-outline-secondary" <%= link_to "Book Now", new_art_booking_path(@art)%></a>
   </div>
-
+  <div class="product-device shadow-sm d-none d-md-block"></div>
+  <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
+</div>
