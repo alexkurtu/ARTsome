@@ -18,6 +18,8 @@ class ArtsController < ApplicationController
       @total_days = (finish - start).to_f
       @total_price = (@total_days * @booking.value.to_f).round
     end
+
+    # bookiongs = Bookings.all.map do booking =>
     # @art = Art.find(params[:art_id])
     # @bookings = @art.bookings
   end

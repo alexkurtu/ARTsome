@@ -14,6 +14,10 @@ puts "destroying all users"
 
 User.destroy_all
 
+puts "destroying all bookings"
+
+Booking.destroy_all
+
 puts "Creating user"
 
 user = User.create!(email: "user@user.com", password: "123456")
@@ -105,7 +109,8 @@ art = Art.new(
   category: "Painting",
   title: "Monalisa",
   description: Faker::Movies::StarWars.quote,
-  picture: "https://images.unsplash.com/photo-1423742774270-6884aac775fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80",
+  picture: "https://images.unsplash.com/photo-14237
+42774270-6884aac775fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80",
   artist: "Leonardo da Vinci",
   year: "1503",
   current_location: "Paris, France",
@@ -115,3 +120,11 @@ art.user = user
 art.save!
 
 puts "created #{Art.count} arts"
+
+puts "Creating booking"
+r_user = User.all.sample
+r_art = Art.all.sample
+
+current = Booking.create!(offer_date: "11.02.2023", value: 350, rent_type: 1,
+                          starts_at: "11.02.23", ends_at: "22.02.23",
+                          shipping_address: "Berlin, Germany", user_id: r_user.id, art_id: r_art.id)
