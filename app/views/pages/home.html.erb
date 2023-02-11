@@ -10,7 +10,7 @@
 <section class="jumbotron text-center">
   <div class="container">
     <br>
-    <p class="lead text-muted">Here Listed all the art pieces available for rent..</p>
+    <p class="lead text-muted">Pieces of Art available to rent</p>
   </div>
 </section>
 
@@ -25,7 +25,7 @@
         <div class="d-flex justify-content-between align-items-center">
           <div class="btn-group">
             <%= link_to "View", art_path(art.id), class: "btn btn-primary" %>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+            <%= link_to "View", new_art_booking_path(art.id), class: "btn btn-sm btn-outline-secondary" %>
           </div>
         </div>
       </div>

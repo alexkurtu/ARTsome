@@ -31,7 +31,7 @@ class ArtsController < ApplicationController
   def create
     @art = Art.new(art_params)
     @art.user = current_user
-    if @art.save
+    if @art.save!
       redirect_to arts_path(@art)
     else
       render :new, status: :unprocessable_entity
