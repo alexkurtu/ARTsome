@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    @arts  = Art.all
+    @arts = Art.all
   end
 end

@@ -7,4 +7,3 @@ class Art < ApplicationRecord
   validates :category, :description, :title, :artist, :year, :current_location, :price, presence: true
   has_many_attached :photos
 end
-

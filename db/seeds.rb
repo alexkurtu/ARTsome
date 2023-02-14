@@ -110,8 +110,7 @@ art = Art.new(
   category: "Painting",
   title: "Monalisa",
   description: Faker::Movies::StarWars.quote,
-  picture: "https://images.unsplash.com/photo-14237
-42774270-6884aac775fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80",
+  picture: "https://images.unsplash.com/photo-1423742774270-6884aac775fa?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1471&q=80",
   artist: "Leonardo da Vinci",
   year: "1503",
   current_location: "Paris, France",

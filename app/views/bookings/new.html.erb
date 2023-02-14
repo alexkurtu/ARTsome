@@ -3,11 +3,11 @@
 <br>
 <br>
 <h1>Create new Offer</h1>
-<%= simple_form_for(@art, @booking) do |f| %>
+<%= simple_form_for [@art, @booking] do |f| %>
   <%= f.input :value %>
   <%= f.input :rent_type %>
-  <%= f.input :starts_at%>
-  <%= f.input :ends_at %>
+  <%= f.input :starts_at %>
+  <%= f.input :ends_at, as: :string, wrapper: :date, input_html: {value: I18n.l(f.object.date)} %>
   <%= f.input :shipping_address %>
   <%= f.submit %>
 <% end %>
