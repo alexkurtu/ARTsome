@@ -17,9 +17,9 @@
                 <li><a class="dropdown-item" href="#">Digital Art</a></li>
                 <li><a class="dropdown-item" href="#">Street Art</a></li>
                 <li><a class="dropdown-item" href="#">Sculpture</a></li>
-                <li><a class="dropdown-item" href="#">Sculpture</a></li>
-                <li><a class="dropdown-item" href="#">Sculpture</a></li>
-                <li><a class="dropdown-item" href="#">Sculpture</a></li>
+                <li><a class="dropdown-item" href="#">Mosaic Art</a></li>
+                <li><a class="dropdown-item" href="#">Collage Art</a></li>
+                <li><a class="dropdown-item" href="#">Mixed Media Art</a></li>
               </ul>
           </div>
         </div>
@@ -28,11 +28,13 @@
         <% @arts.each do |art| %>
         <div class="col">
           <div class="card shadow-sm">
+          <div class="view overlay zoom"><a href="<%= art_path(art.id) %>">
 
             <% unless art.picture.empty? %>
-              <img src="<%= art.picture %>" class="card-img-top" alt="...">
+              <img src="<%= art.picture %>" height="300" style="object-fit: cover;" class="card-img-top" alt="...">
             <% end %>
-            
+            </a></div>
+
             <div class="card-body">
               <h5 class="card-title"><%= art.title %></h5>
               <p class="card-text"><%= art.description %></p>
@@ -51,3 +53,4 @@
       </div>
     </div>
 </div>
+
