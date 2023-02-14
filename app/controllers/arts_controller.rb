@@ -8,6 +8,7 @@ class ArtsController < ApplicationController
   def show
     @art = Art.find(params[:id])
     @booking = Booking.new
+    @art.user = current_user
     @starts_at = params['starts_at']
     @ends_at = params['ends_at']
     if !@start_date.blank? && !@end_date.blank?
@@ -19,7 +20,7 @@ class ArtsController < ApplicationController
       @total_price = (@total_days * @booking.value.to_f).round
     end
 
-    # bookiongs = Bookings.all.map do booking =>
+    # bookings = Bookings.all.map do booking =>
     # @art = Art.find(params[:art_id])
     # @bookings = @art.bookings
   end

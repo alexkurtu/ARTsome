@@ -1,19 +1,25 @@
 
 <div
-  class="bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white"
+  class="position-relative overflow-hidden bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white"
     style="
       background-image: url(<%= @art.picture%>);
-      width: auto;
-      height: 100vh;
+      height: 700px;
       background-size: cover;
-      repeat: no-repeat;">
+      background-repeat: no-repeat;">
 
     <div class="col-md-6 p-lg-5 mx-auto my-5">
+      <br>
+      <br>
+      <br>
+      <br>
       <h1 class="display-4 fw-bold"><%= @art.title %></h1>
+      <br>
       <p class="lead fw-normal"><%= @art.artist %></p>
+      <br>
       <p class="lead fw-normal"><%= @art.year %></p>
     </div>
 </div>
+
 
 <div class="position-relative overflow-hidden p-5 p-md-5 m-md-5 text-center bg-light">
   <div class="col-md-auto p-lg-auto mx-auto my-auto">
@@ -23,6 +29,4 @@
     <p class="lead fw-normal">€ <%= @art.price.to_i %>/day</p>
     <a class="btn btn-outline-secondary" <%= link_to "Book Now", new_art_booking_path(@art)%></a>
   </div>
-  <div class="product-device shadow-sm d-none d-md-block"></div>
-  <div class="product-device product-device-2 shadow-sm d-none d-md-block"></div>
 </div>

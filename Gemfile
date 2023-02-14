@@ -83,4 +83,5 @@ gem "httparty"
 gem "cloudinary"
 gem 'validates_overlap'
 gem "geocoder"
-
+gem 'bootstrap-datepicker-rails'
+gem 'date_wrapper'
