@@ -1,8 +1,10 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-lewagon fixed-top">
+<div class="navbar navbar-expand-sm navbar-light navbar-lewagon bg-transparent p-md-5 ">
   <div class="container-fluid">
-    <%= link_to root_path, class: "navbar-brand" do %>
-      <%= image_tag ("Artsome_logo.webp") %>
-    <% end %>
+    <div class="navbar-brand border-5 w-25">
+      <%= link_to root_path, class: do %>
+        <%= image_tag "logo.jpeg", class: "rounded-circle shadow-lg" %>
+      <% end %>
+    </div>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -11,21 +13,17 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent ">
       <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
-          <%# if user.owner? %>
-<!--            <li class="nav-item active">-->
-            <%#= link_to "New Listing", "#", class: "nav-link" %>
-<!--          </li>-->
-<!--            <li class="nav-item active">-->
-            <%#= link_to "All Listings", "#", class: "nav-link" %>
-<!--          </li>-->
-          <li class="nav-item">
-            <%= link_to "Bookings", "#", class: "nav-link" %>
+            <li class="nav-item p-2">
+            <%= link_to "New Listing", new_art_path, class: "nav-link" %>
           </li>
-          <li class="nav-item active">
-            <%= link_to "Messages", "#", class: "nav-link" %>
+          <li class="nav-item p-2">
+            <%= link_to "Bookings", "", class: "nav-link" %>
           </li>
-          <li class="nav-item dropdown">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+          <li class="nav-item active p-2">
+            <%= link_to "Messages", "#", class: "nav-link p-2" %>
+          </li>
+          <li class="nav-item dropdown p-2">
+            <%= image_tag "T02NE0241-U046LB40EA1-dd9ba703f86c-512.jpg", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Switch to Owner", "#", class: "dropdown-item" %>
               <%= link_to "Switch to User", "#", class: "dropdown-item" %>
@@ -41,3 +39,5 @@
     </div>
   </div>
 </div>
+
+
