@@ -2,5 +2,5 @@
 import "@hotwired/turbo-rails"
 import "./controllers"
 import "bootstrap"
-import "bootstrap-datepicker"
-import "date_wrapper"
+// import "bootstrap-datepicker"
+// import "date_wrapper"
