@@ -1,9 +1,10 @@
-<div class="container">
+<!--<div class="container min-vh-100 bg-black pb-5">-->
+<!--</div>-->
+<div class="container p-5">
   <div class="gallery">
     <% @arts.each do |art| %>
       <div class="gallery-item img-h">
         <a href="<%= art_path(art.id) %>">
-
         <% unless art.picture.nil? %>
           <img src="<%= art.picture %>" alt="...">
         <% end %>
@@ -12,3 +13,5 @@
     <% end %>
   </div>
 </div>
+
+

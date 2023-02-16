@@ -17,15 +17,18 @@ class BookingsController < ApplicationController
       @booking.value = 0
     end
     if @booking.save!
-      redirect_to art_booking_path(@art, @booking), notice: "Booking was successfully created."
+      redirect_to art_booking_path(@booking, @art), notice: "Booking was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def index
-    @bookings = Booking.where(user_id: current_user.id)
+    @bookings = Booking.all
     @review = Review.new
+    @arts = Art.all
+
+
   end
 
   def show
