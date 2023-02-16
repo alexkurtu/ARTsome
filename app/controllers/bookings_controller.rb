@@ -3,6 +3,11 @@ class BookingsController < ApplicationController
   def new
     @art = Art.find(params[:art_id])
     @booking = Booking.new
+    if @booking.ends_at && @booking.starts_at
+      @booking.value = (@booking.ends_at - @booking.starts_at).to_f * @booking.art.price.to_f
+    else
+      @booking.value = 0
+    end
   end
 
   def create
@@ -10,7 +15,6 @@ class BookingsController < ApplicationController
     @booking = Booking.new(bookings_params)
     @booking.art = @art
     @booking.user = current_user
-    @booking.status = "Pending host validation"
     if @booking.ends_at && @booking.starts_at
       @booking.value = (@booking.ends_at - @booking.starts_at).to_f * @booking.art.price.to_f
     else
@@ -56,7 +60,7 @@ class BookingsController < ApplicationController
   private
 
   def bookings_params
-    params.require(:booking).permit(:offer_date, :value, :rent_type, :starts_at, :ends_at, :shipping_address, :art_id)
+    params.require(:booking).permit(:offer_date, :value, :rent_type, :starts_at, :ends_at, :shipping_address)
   end
 
   def set_booking
