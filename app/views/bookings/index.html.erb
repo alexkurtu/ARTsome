@@ -1,8 +1,11 @@
-<br>
-<br>
-<br>
-<div>
-  <h1>Bookings-index</h1>
+<div class="container p-5">
+  <div class="gallery">
+    <% @bookings.each do |booking| %>
+      <div class="gallery-item-booking img-h">
+          <% unless booking.art.picture.nil? %>
+            <img src="<%= booking.art.picture %>" alt="...">
+          <% end %>
+      </div>
+    <% end %>
+  </div>
 </div>
-
-
