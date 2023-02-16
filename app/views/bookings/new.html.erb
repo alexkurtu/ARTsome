@@ -1,14 +1,27 @@
-<br>
-<br>
-<br>
-<br>
-<h1>Create new Offer</h1>
-<%= simple_form_for [@art, @booking] do |f| %>
-  <%= f.input :value %>
-  <%= f.input :rent_type %>
-  <%= f.input :starts_at %>
-  <%= f.input :starts_at, as: :date, html5: true %>
-  <%= f.input :ends_at, as: :date, html5: true %>
-  <%= f.input :shipping_address %>
-  <%= f.submit %>
-<% end %>
+<div class="container">
+  <div class="modal-content rounded-4 shadow">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-content rounded-4 shadow">
+          <div class="modal-header p-5 pb-4 border-bottom-0">
+            <h1>Create new booking</h1>
+            <%= simple_form_for [@art, @booking] do |f| %>
+          </div>
+          <div class="modal-body p-5 pt-0">
+            <div class="row g-3">
+              <div class="col-sm-6">
+                <%= f.input :starts_at, as: :date, html5: true %>
+              </div>
+              <div class="col-sm-6">
+                <%= f.input :starts_at, as: :date, html5: true %>
+              </div>
+
+                <%= f.submit %>
+            </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

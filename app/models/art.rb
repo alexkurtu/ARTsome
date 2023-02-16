@@ -8,4 +8,12 @@ class Art < ApplicationRecord
 
   validates :category, :description, :title, :artist, :year, :current_location, :price, presence: true
   has_many_attached :photos
+
+  include PgSearch::Model
+
+  pg_search_scope :search_by_title_artist_year,
+    against: [ :title, :artist, :year ],
+    using: {
+      tsearch: { prefix: true }
+    }
 end
