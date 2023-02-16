@@ -4,10 +4,26 @@
 <br>
 <h1>Create new Offer</h1>
 <%= simple_form_for [@art, @booking] do |f| %>
-  <%= f.input :value %>
   <%= f.input :rent_type %>
-  <%= f.input :starts_at %>
-  <%= f.input :ends_at, as: :string, wrapper: :date, input_html: {value: I18n.l(f.object.date)} %>
+  <%= f.input :starts_at, as: :date, html5: true %>
+  <%= f.input :ends_at, as: :date, html5: true %>
   <%= f.input :shipping_address %>
   <%= f.submit %>
 <% end %>
+<%= @art.price %>
+
+<span id="daily-price"><%= @art.price %></span>
+<div id="full-price"></div>
+
+<script>
+  $( "#starts_at, #ends_at" ).change(function() {
+    var d1=document.getElementById("starts-at").value;
+    var d2=document.getElementById("ends_at").value;
+    var start = new Date(d1);
+    var end = new Date(d2);
+    var daily_price=document.getElementById("daily-price").innerHTML;
+
+    var full_price = daily_price * (end-start) / (24*3600*1000); // from milliseconds to days.
+    $("#full-price").innerHTML=full_price;
+  });
+</script>

@@ -9,3 +9,14 @@ application.register("hello", HelloController)
 
 import MapController from "./map_controller"
 application.register("map", MapController)
+
+$( "#starts_at, #ends_at" ).change(function() {
+  var d1=document.getElementById("starts-at").value;
+  var d2=document.getElementById("ends_at").value;
+  var start = new Date(d1);
+  var end = new Date(d2);
+  var daily_price=document.getElementById("daily-price").innerHTML;
+
+  var full_price = daily_price * (end-start) / (24*3600*1000); // from milliseconds to days.
+  $("#full-price").innerHTML=full_price;
+});

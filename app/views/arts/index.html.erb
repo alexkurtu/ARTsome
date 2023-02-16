@@ -30,9 +30,9 @@
           <div class="card shadow-sm">
           <div class="view overlay zoom"><a href="<%= art_path(art.id) %>">
 
-            <% unless art.picture.empty? %>
+            <%# <% unless art.picture.empty? %>
               <img src="<%= art.picture %>" height="300" style="object-fit: cover;" class="card-img-top" alt="...">
-            <% end %>
+            <%# <% end %>
             </a></div>
 
             <div class="card-body">
@@ -53,4 +53,3 @@
       </div>
     </div>
 </div>
-
