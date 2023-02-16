@@ -3,9 +3,11 @@
     <% @arts.each do |art| %>
       <div class="gallery-item img-h">
         <a href="<%= art_path(art.id) %>">
-        <%# <% unless art.picture.empty? %>
+
+        <% unless art.picture.nil? %>
           <img src="<%= art.picture %>" alt="...">
-        <%# <% end %> %>
+        <% end %>
+        </a>
       </div>
     <% end %>
   </div>
