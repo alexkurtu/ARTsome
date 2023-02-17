@@ -12,6 +12,7 @@ class ArtsController < ApplicationController
   def show
     @art = Art.find(params[:id])
     @booking = Booking.new
+    @review = Review.new
     @art.user = current_user
     @starts_at = params['starts_at']
     @ends_at = params['ends_at']
