@@ -19,7 +19,9 @@ class BookingsController < ApplicationController
     #   }
     # ]
     if @booking.save!
-      redirect_to bookings_path(@booking), notice: "Booking was successfully created."
+      redirect_to bookings_path, notice: "Booking was successfully created."
+      @booking.status = "Pending approval"
+
     else
       render :new, status: :unprocessable_entity
     end
