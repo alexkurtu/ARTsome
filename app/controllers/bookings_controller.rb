@@ -3,6 +3,11 @@ class BookingsController < ApplicationController
   def new
     @art = Art.find(params[:art_id])
     @booking = Booking.new
+    if @booking.ends_at && @booking.starts_at
+      @booking.value = (@booking.ends_at - @booking.starts_at).to_f * @booking.art.price.to_f
+    else
+      @booking.value = 0
+    end
   end
 
   def create
@@ -10,22 +15,24 @@ class BookingsController < ApplicationController
     @booking = Booking.new(bookings_params)
     @booking.art = @art
     @booking.user = current_user
-    @booking.status = "Pending host validation"
     if @booking.ends_at && @booking.starts_at
       @booking.value = (@booking.ends_at - @booking.starts_at).to_f * @booking.art.price.to_f
     else
       @booking.value = 0
     end
     if @booking.save!
-      redirect_to art_booking_path(@art, @booking), notice: "Booking was successfully created."
+      redirect_to art_booking_path(@booking, @art), notice: "Booking was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
   end
 
   def index
-    @bookings = Booking.where(user_id: current_user.id)
+    @bookings = Booking.all
     @review = Review.new
+    @arts = Art.all
+
+
   end
 
   def show
@@ -56,7 +63,7 @@ class BookingsController < ApplicationController
   private
 
   def bookings_params
-    params.require(:booking).permit(:offer_date, :value, :rent_type, :starts_at, :ends_at, :shipping_address, :art_id)
+    params.require(:booking).permit(:offer_date, :value, :rent_type, :starts_at, :ends_at, :shipping_address)
   end
 
   def set_booking
