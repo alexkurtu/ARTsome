@@ -1,7 +1,6 @@
 class Booking < ApplicationRecord
   belongs_to :user
   belongs_to :art
-  has_one :review
   # validates :starts_at, :ends_at, overlap: true
   # validates :status, inclusion: { in: ["Pending approval", "Confirmed", "Declined], allow_nil: true }
   geocoded_by :shipping_address

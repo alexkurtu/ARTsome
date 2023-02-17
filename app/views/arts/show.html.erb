@@ -28,17 +28,46 @@
       <a class="btn btn-outline-secondary" <%= link_to "Book Now", new_art_booking_path(@art)%></a>
     </div>
   </div>
+
+
+  <div class="position-relative overflow-hidden p-5 p-md-5 m-md-5 text-justify bg-light">
+    <div class="col-md-auto p-lg-auto mx-auto my-auto">
+      <div class="display-7 fw-normal">
+        <h3>Reviews</h3>
+          <div class="list-group">
+            <% @art.reviews.each do |review| %>
+              <li class="list-group-item">
+                <small>
+                  <% count = 0 %>
+                  <% 5.times do %>
+                    <% if review.rating > count %>
+                      <i class="fa-solid fa-star"></i>
+                    <% else %>
+                      <i class="fa-regular fa-star"></i>
+                    <% end %>
+                    <% count += 1 %>
+                  <% end %>
+                </small>
+                <p><%= review.comment %></p>
+              </li>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="position-relative overflow-hidden p-5 p-md-5 m-md-5 text-justify bg-light">
+      <div class="col-md-auto p-lg-auto mx-auto my-auto">
+        <div class="display-7 fw-normal">
+          <h3>Give us a review</h3>
+          <%= simple_form_for [@art, @review] do |f| %>
+            <%= f.input :rating, collection: 0..5 %>
+            <%= f.input :comment %>
+            <%= f.submit "Submit review", class: "btn btn-primary" %>
+          <% end %>
+        </div>
+      </div>
+  </div>
+
 </div>
-
-
-<h3>Reviews</h3>
-
-<h1>New review</h1>
-<%= simple_form_for [@art, @review] do |f| %>
-  <%= f.input :rating %>
-  <%= f.input :comment %>
-  <%= f.submit "Submit review", class: "btn btn-primary" %>
-<% end %>
-
-
-
