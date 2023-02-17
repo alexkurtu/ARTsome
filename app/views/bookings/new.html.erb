@@ -1,4 +1,4 @@
-<div class="container" data-controller="change-price" data-change-price-price-value="<%= @art.price%>">
+<div class="container" data-controller="change-price" data-change-price-price-value="<%= number_to_currency(@art.price, unit: "€")%>">
   <div class="modal-content rounded-4 shadow">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -6,13 +6,13 @@
             <h1>Rent the amazing <strong><%= @art.title %></strong> by <strong><%= @art.artist %><Strong></h1>
             <%= simple_form_for [@art, @booking] do |f| %>
           </div>
-          <div class="modal-body p-5 pt-0" data-controller="change-price" data-change-price-price-value="<%= @art.price%>">
+          <div class="modal-body p-5 pt-0" data-controller="change-price" data-change-price-price-value="<%= @art.price %>">
             <div class="row g-3">
               <div class="col-sm-6">
                 <%= f.input :starts_at, as: :date, html5: true, input_html: { data: { change_price_target: "startsAt" } } %>
               </div>
               <div class="col-sm-6" >
-                <%= f.input :ends_at, as: :date, html5: true, input_html: { data: { action: "change->change-price#total-price" } }%>
+                <%= f.input :ends_at, as: :date, html5: true, input_html: { data: { action: "change->change-price#totalPrice" } }%>
               </div>
                <div class="col-sm-6">
                 <%= f.input :shipping_address %>
@@ -23,14 +23,17 @@
               <div class="col-sm-6">
                 <%= f.submit %>
               </div>
+              <div class="col-sm-6">
+              <h2> Total Price in €  </h2>
+              <h2  data-change-price-target="price">
+                <%= @art.price.to_i %>
+              </h2>
+
+              </div>
             </div>
             <% end %>
-            <div>
           </div>
-        <h1  data-change-price-target="price">
-            <%= @art.price %>
-        </h1>
-
+        </div>
       </div>
     </div>
   </div>
