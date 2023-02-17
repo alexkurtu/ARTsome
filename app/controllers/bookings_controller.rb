@@ -3,11 +3,6 @@ class BookingsController < ApplicationController
   def new
     @art = Art.find(params[:art_id])
     @booking = Booking.new
-    if @booking.ends_at && @booking.starts_at
-      @booking.value = (@booking.ends_at - @booking.starts_at).to_f * @booking.art.price.to_f
-    else
-      @booking.value = 0
-    end
   end
 
   def create
@@ -15,13 +10,10 @@ class BookingsController < ApplicationController
     @booking = Booking.new(bookings_params)
     @booking.art = @art
     @booking.user = current_user
-    if @booking.ends_at && @booking.starts_at
-      @booking.value = (@booking.ends_at - @booking.starts_at).to_f * @booking.art.price.to_f
-    else
-      @booking.value = 0
-    end
+    @booking.value = (@booking.ends_at - @booking.starts_at).to_f * @art.price.to_f
+    @booking.status = "Pending approval"
     if @booking.save!
-      redirect_to art_booking_path(@booking, @art), notice: "Booking was successfully created."
+      redirect_to bookings_path, notice: "Booking was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -31,8 +23,6 @@ class BookingsController < ApplicationController
     @bookings = Booking.all
     @review = Review.new
     @arts = Art.all
-
-
   end
 
   def show
