@@ -2,36 +2,7 @@
   <div class="modal-content rounded-4 shadow">
     <div class="modal-dialog">
       <div class="modal-content">
-          <div class="modal-header p-5 pb-4 border-bottom-0">
-            <h1>Rent the amazing <strong><%= @art.title %></strong> by <strong><%= @art.artist %><Strong></h1>
-            <%= simple_form_for [@art, @booking] do |f| %>
-          </div>
-          <div class="modal-body p-5 pt-0" data-controller="change-price" data-change-price-price-value="<%= @art.price%>">
-            <div class="row g-3">
-              <div class="col-sm-6">
-                <%= f.input :starts_at, as: :date, html5: true, input_html: { data: { change_price_target: "startsAt" } } %>
-              </div>
-              <div class="col-sm-6" >
-                <%= f.input :ends_at, as: :date, html5: true, input_html: { data: { action: "change->change-price#total-price" } }%>
-              </div>
-               <div class="col-sm-6">
-                <%= f.input :shipping_address %>
-              </div>
-               <div class="col-sm-6">
-                <%= f.input :rent_type, collection: [ 'Private use', 'Events', 'Exhibition', 'Museum'], :prompt => 'Select Rent Type'%>
-              </div>
-              <div class="col-sm-6">
-                <%= f.submit %>
-              </div>
-            </div>
-            <% end %>
-            <div>
-          </div>
-        <h1  data-change-price-target="price">
-            <%= @art.price %>
-        </h1>
-
-      </div>
+        <%= render "shared/form-booking" %>
     </div>
   </div>
 </div>

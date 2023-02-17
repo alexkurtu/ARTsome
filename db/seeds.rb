@@ -120,11 +120,3 @@ art.user = user
 art.save!
 
 puts "created #{Art.count} arts"
-
-puts "Creating booking"
-r_user = User.all.sample
-r_art = Art.all.sample
-
-current = Booking.create!(offer_date: "11.02.2023", value: 350, rent_type: 1,
-                          starts_at: "11.02.23", ends_at: "22.02.23",
-                          shipping_address: "Berlin, Germany", user_id: r_user.id, art_id: r_art.id)

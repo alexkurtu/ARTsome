@@ -1,10 +1,23 @@
 <div class="container p-5">
   <div class="gallery">
     <% @bookings.each do |booking| %>
-      <div class="gallery-item-booking img-h">
-          <% unless booking.art.picture.nil? %>
-            <img src="<%= booking.art.picture %>" alt="...">
-          <% end %>
+      <div class="gallery-item-booking img-h" style="position: relative;">
+        <div class="button" style="position: absolute; top: 0; right: 0;">
+          <%= link_to 'edit', edit_art_booking_path(booking.art, booking), class:"button" %>
+        </div>
+<!--        <div class="button" style="position: absolute; bottom: 0; right: 0;">-->
+<!--          <button>Edit</button>-->
+<!--        </div>-->
+        <% unless booking.art.picture.nil? %>
+          <img src="<%= booking.art.picture %>" alt="...">
+          <div class="centered text-white">
+            <h1>Booking Information</h1>
+            <p>Artwork Title: <%= booking.art.title %></p>
+            <p>start Booking Date: <%= booking.starts_at.strftime("%d/%m/%Y") %></p>
+            <p>end Booking Date: <%= booking.ends_at.strftime("%d/%m/%Y") %></p>
+            <p>Price: <%= number_to_currency(booking.value, unit: "€") %></p>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>

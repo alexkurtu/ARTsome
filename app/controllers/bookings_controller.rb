@@ -1,13 +1,9 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
+
   def new
     @art = Art.find(params[:art_id])
     @booking = Booking.new
-    if @booking.ends_at && @booking.starts_at
-      @booking.value = (@booking.ends_at - @booking.starts_at).to_f * @booking.art.price.to_f
-    else
-      @booking.value = 0
-    end
   end
 
   def create
@@ -15,13 +11,15 @@ class BookingsController < ApplicationController
     @booking = Booking.new(bookings_params)
     @booking.art = @art
     @booking.user = current_user
-    if @booking.ends_at && @booking.starts_at
-      @booking.value = (@booking.ends_at - @booking.starts_at).to_f * @booking.art.price.to_f
-    else
-      @booking.value = 0
-    end
+    @booking.value = (@booking.ends_at - @booking.starts_at).to_f * @art.price.to_f
+    # @markers = [
+    #   {
+    #     lat: @booking.latitude,
+    #     lng: @booking.longitude
+    #   }
+    # ]
     if @booking.save!
-      redirect_to art_booking_path(@booking, @art), notice: "Booking was successfully created."
+      redirect_to bookings_path(@booking), notice: "Booking was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -31,27 +29,26 @@ class BookingsController < ApplicationController
     @bookings = Booking.all
     @review = Review.new
     @arts = Art.all
-
-
   end
 
   def show
     set_booking
     @art = @booking.art
+  end
 
-    @markers = [
-      {
-        lat: @booking.latitude,
-        lng: @booking.longitude
-      }
-    ]
+  def edit
+    @booking = Booking.find(params[:id])
+    @art = @booking.art
   end
 
   def update
     set_booking
+    @art = @booking.art
     @booking.status = "Pending host validation"
     @booking.save!
-    redirect_to booking_path(@booking)
+    redirect_to bookings_path(@booking)
+
+
   end
 
   def destroy
@@ -69,4 +66,9 @@ class BookingsController < ApplicationController
   def set_booking
     @booking = Booking.find(params[:id])
   end
+
+  def set_art
+    @art = Art.find(params[:art_id])
+  end
+
 end

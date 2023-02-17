@@ -10,7 +10,7 @@ export default class extends Controller {
 
   }
 
-  end(event) {
+  totalPrice(event) {
     const start = new Date(this.startsAtTarget.value)
     const end = new Date(event.currentTarget.value)
     const days = (end - start) / (24*3600*1000);
