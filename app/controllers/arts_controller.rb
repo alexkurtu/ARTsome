@@ -3,7 +3,7 @@ class ArtsController < ApplicationController
 
   def index
     if params[:query].present?
-      @arts = Art.search_by_title_artist_year(params[:query])
+      @arts = Art.search_by_title_artist_year_category(params[:query])
     else
       @arts = Art.all
     end
@@ -11,10 +11,10 @@ class ArtsController < ApplicationController
 
   def show
     @art = Art.find(params[:id])
+    @art.user = current_user
     @booking = Booking.new
     @review = Review.new
-    @art.user = current_user
-    
+
 
     # bookings = Bookings.all.map do booking =>
     # @art = Art.find(params[:art_id])
@@ -29,7 +29,7 @@ class ArtsController < ApplicationController
     @art = Art.new(art_params)
     @art.user = current_user
     if @art.save!
-      redirect_to arts_path(@art)
+      redirect_to art_path(@art), notice: 'Artwork was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -59,6 +59,6 @@ class ArtsController < ApplicationController
   private
 
   def art_params
-    params.require(:art).permit(:title, :category, :price, :description, :artist, :year, :current_location, photos: [])
+    params.require(:art).permit(:title, :category, :price, :description, :artist, :year, :current_location, :picture, :photo)
   end
 end

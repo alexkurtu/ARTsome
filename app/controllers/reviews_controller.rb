@@ -1,11 +1,6 @@
 class ReviewsController < ApplicationController
   # before_action :set_booking, only: [:new, :create]
 
-  def index
-    @art = Art.find(params[:art_id])
-    @reviews = Review.all
-  end
-
   def new
     @art = Art.find(params[:art_id])
     @review = Review.new
