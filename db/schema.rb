@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_16_153524) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_18_104349) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -46,7 +46,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_16_153524) do
     t.string "category"
     t.string "title"
     t.text "description"
-    t.string "picture"
     t.string "artist"
     t.integer "year"
     t.string "current_location"
@@ -60,7 +59,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_16_153524) do
   end
 
   create_table "bookings", force: :cascade do |t|
-    t.date "offer_date"
     t.float "value"
     t.string "rent_type"
     t.date "starts_at"
