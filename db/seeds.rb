@@ -13,10 +13,11 @@ Art.all.each do | art |
   art.photo.purge
 end
 
+Review.destroy_all
+
 puts "destroying all bookings"
 
 Booking.destroy_all
-
 
 puts "destroying all arts"
 
@@ -25,7 +26,6 @@ Art.destroy_all
 puts "destroying all users"
 
 User.destroy_all
-
 
 puts "Creating user"
 
@@ -60,4 +60,3 @@ r_art = Art.all.sample
 current = Booking.create!(value: 350, rent_type: 1,
                           starts_at: "11.02.23", ends_at: "22.02.23",
                           shipping_address: "Berlin, Germany", user_id: r_user.id, art_id: r_art.id)
-
