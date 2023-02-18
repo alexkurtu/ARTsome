@@ -8,6 +8,7 @@ class Art < ApplicationRecord
 
   # validates :category, :description, :title, :artist, :year, :current_location, :price, presence: true
   has_one_attached :photo
+  after_commit :add_default_cover, on: [:create, :update]
 
   include PgSearch::Model
 
@@ -16,4 +17,12 @@ class Art < ApplicationRecord
     using: {
       tsearch: { prefix: true }
     }
+
+  private
+
+  def add_default_cover
+    unless photo.attached?
+      self.photo.attach(io: File.open(Rails.root.join("app", "assets", "images", "default.jpg")), filename: 'default.jpg' , content_type: "image/jpg")
+    end
+  end
 end

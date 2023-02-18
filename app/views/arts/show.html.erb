@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="position-relative overflow-hidden bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white"
           style="
-          background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path @art.photo.key, height: 1000, crop: :fill %>);
+          background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('<%= cl_image_path @art.photo.key, height: 1000, crop: :fill if !@art.photo.key.nil? %>');
           height: 700px;
           background-size: cover;
           background-repeat: no-repeat;">

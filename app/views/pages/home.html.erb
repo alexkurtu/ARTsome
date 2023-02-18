@@ -3,7 +3,8 @@
     <% @arts.each do |art| %>
       <div class="gallery-item img-h">
         <a href="<%= art_path(art.id) %>">
-            <img style= "<%= cl_image_tag art.photo.key, height: 900, crop: :fill %>">
+            <%= cl_image_tag art.photo.key, height: 900, crop: :fill if !art.photo.key.nil? %>
+        </a>
       </div>
     <% end %>
   </div>

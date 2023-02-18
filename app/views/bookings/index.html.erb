@@ -9,7 +9,7 @@
 <!--          <button>Edit</button>-->
 <!--        </div>-->
 
-          <img src="<%= cl_image_tag art.photo.key %>" alt="...">
+          <img src="<%= cl_image_tag art.photo.key if art.photo.key.nil? %>" alt="...">
           <div class="centered text-white">
 
             <h1>Booking Information</h1>
