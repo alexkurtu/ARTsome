@@ -14,11 +14,6 @@ class ArtsController < ApplicationController
     @art.user = current_user
     @booking = Booking.new
     @review = Review.new
-
-
-    # bookings = Bookings.all.map do booking =>
-    # @art = Art.find(params[:art_id])
-    # @bookings = @art.bookings
   end
 
   def new

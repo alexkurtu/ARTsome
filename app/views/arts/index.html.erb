@@ -29,13 +29,13 @@
         </div>
       </div>
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        <% @arts.each do |art| %>
+        <% @arts.each do |item| %>
         <div class="col">
           <div class="card shadow-sm">
           <div class="view overlay zoom">
-            <a href="<%= art_path(art.id) %>">
+            <a href="<%= art_path(item) %>">
 
-                <%= cl_image_tag( art.photo.key, :width=>374, :height=>300, :crop=>"fill") if !art.photo.key.nil? %>
+                <%= cl_image_tag( item.photo.key, :width=>374, :height=>300, :crop=>"fill") if !item.photo.key.nil? %>
             </a>
           </div>
 
@@ -48,7 +48,7 @@
               <li class="list-group-item"><strong>Categrory: </strong><%= art.category %></li>
               <li class="list-group-item"><strong>Artist: </strong><%= art.artist %></li>
               <li class="list-group-item"><strong>Year: </strong><%= art.year %></li>
-              <li class="list-group-item"><strong>Location: </strong><%= art.current_location %></li>
+              <li class="list-group-item"><strong>Location: </strong><%= art.currenBt_location %></li>
               <li class="list-group-item"><strong>Location: </strong><%= art.price %></li>
             </ul>
           </div>
