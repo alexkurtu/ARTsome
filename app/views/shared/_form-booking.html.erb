@@ -19,10 +19,11 @@
     <div class="col-sm-6">
       <%= f.submit %>
     </div>
-    <div class="col-sm-6"> <h1> Total price in € <h1>
+    <div class="col-sm-6"> <h1> Total price in € </h1>
       <h1  data-change-price-target="price">
        <%= number_to_currency(@art.price, unit: "€") %>
       </h1>
     </div>
   <% end %>
+  </div>
 </div>
