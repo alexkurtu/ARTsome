@@ -9,9 +9,8 @@
 <!--          <button>Edit</button>-->
 <!--        </div>-->
 
-          <img src="<%= cl_image_tag art.photo.key %>" alt="...">
-
-          <div class="centered text-white">
+        <img style= "<%= cl_image_tag booking.art.photo.key, height: 300, crop: :fill %>">
+        <div class="centered text-white">
 
             <h1>Booking Information</h1>
             <p>Artwork Title: <%= booking.art.title %></p>
@@ -19,7 +18,6 @@
             <p>end Booking Date: <%= booking.ends_at.strftime("%d/%m/%Y") %></p>
             <p>Price: <%= number_to_currency(booking.value, unit: "€") %></p>
           </div>
-        <% end %>
       </div>
     <% end %>
   </div>
