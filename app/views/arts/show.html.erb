@@ -1,10 +1,11 @@
 <div class="container-fluid">
   <div class="position-relative overflow-hidden bg-image p-5 text-center shadow-1-strong rounded mb-5 text-white"
-    style="
-    background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path @art.photo.key, height: 300, crop: :fill %>);
-    height: 700px;
-    background-size: cover;
-    background-repeat: no-repeat;">
+
+          style="
+          background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path @art.photo.key, height: 1000, crop: :fill %>);
+          height: 700px;
+          background-size: cover;
+          background-repeat: no-repeat;">
       <div class="col-md-6 p-lg-5 mx-auto my-5">
         <br>
         <br>
@@ -60,7 +61,7 @@
         <div class="display-7 fw-normal">
           <h3>Give us a review</h3>
           <%= simple_form_for [@art, @review] do |f| %>
-            <%= f.input :rating, collection: 0..5 %>
+            <%= f.input :rating, collection: (1..5).to_a, label: "Rate your experience", input_html: {data: {controller: "star-rating"}} %>
             <%= f.input :comment %>
             <%= f.submit "Submit review", class: "btn btn-primary" %>
           <% end %>

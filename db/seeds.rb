@@ -19,6 +19,11 @@ puts "destroying all bookings"
 
 Booking.destroy_all
 
+
+puts "destroying all reviews"
+Review.destroy_all
+
+
 puts "destroying all arts"
 
 Art.destroy_all
@@ -33,7 +38,7 @@ user = User.create!(email: "user@user.com", password: "123456")
 
 puts "preparing to seed the database"
 
-20.times do
+21.times do
   art = Art.new(
     category: [ 'Watercolor Art', 'Oil Paintings', 'Acrylic Paintings', 'Photography', 'Digital Art', 'Street Art', 'Sculpture', 'Mosaic Art', 'Collage Art', 'Mixed Media Art' ].sample,
     title: Faker::Commerce.product_name,

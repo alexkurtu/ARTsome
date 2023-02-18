@@ -1,34 +1,29 @@
-<h1>arts-index</h1>
-
-<%= form_with url: arts_path, method: :get, class: "d-flex" do %>
-  <%= text_field_tag :query,
-    params[:query],
-    class: "form-control",
-    placeholder: "Find a piece of art by title, artist or year"
-  %>
-  <%= submit_tag "Search", class: "btn btn-primary" %>
-<% end %>
-
-
 <div class="album py-5">
-    <div class="container">
-<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">ARTsome Collection</h1>
+  <div class="container">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h2">ARTsome Collection</h1>
+      <%= form_with url: arts_path, method: :get, class: "d-flex" do %>
+        <%= text_field_tag :query,
+            params[:query],
+            class: "form-control",
+            placeholder: "Search something..."%>
+        <%= submit_tag "Search", class: "btn btn-primary" %>
+      <% end %>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group me-2">
             <%= button_to "Add new Art", new_art_path, :class => "btn btn-sm btn-outline-secondary", :method => :get %>
             <button class="btn btn-sm btn-outline-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">Select Category</button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                <li><a class="dropdown-item" href="#">Watercolor Art</a></li>
-                <li><a class="dropdown-item" href="#">Oil Paintings</a></li>
-                <li><a class="dropdown-item" href="#">Acrylic Paintings</a></li>
-                <li><a class="dropdown-item" href="#">Photography</a></li>
-                <li><a class="dropdown-item" href="#">Digital Art</a></li>
-                <li><a class="dropdown-item" href="#">Street Art</a></li>
-                <li><a class="dropdown-item" href="#">Sculpture</a></li>
-                <li><a class="dropdown-item" href="#">Mosaic Art</a></li>
-                <li><a class="dropdown-item" href="#">Collage Art</a></li>
-                <li><a class="dropdown-item" href="#">Mixed Media Art</a></li>
+                <li><a class="dropdown-item" href="?query=Watercolor+Art&commit=Search">Watercolor Art</a></li>
+                <li><a class="dropdown-item" href="?query=Oil+Paintings&commit=Search">Oil Paintings</a></li>
+                <li><a class="dropdown-item" href="?query=Acrylic+Paintings&commit=Search">Acrylic Paintings</a></li>
+                <li><a class="dropdown-item" href="?query=Photography&commit=Search">Photography</a></li>
+                <li><a class="dropdown-item" href="?query=Digital+Art&commit=Search">Digital Art</a></li>
+                <li><a class="dropdown-item" href="?query=Street+Art&commit=Search">Street Art</a></li>
+                <li><a class="dropdown-item" href="?query=Sculpture&commit=Search">Sculpture</a></li>
+                <li><a class="dropdown-item" href="?query=Mosaic+Art&commit=Search">Mosaic Art</a></li>
+                <li><a class="dropdown-item" href="?query=Collage+Art&commit=Search">Collage Art</a></li>
+                <li><a class="dropdown-item" href="?query=Mixed+Media+Art&commit=Search">Mixed Media Art</a></li>
               </ul>
           </div>
         </div>
@@ -39,9 +34,8 @@
           <div class="card shadow-sm">
           <div class="view overlay zoom">
             <a href="<%= art_path(art.id) %>">
-              <% unless art.picture.nil? %>
-                <img src="<%= art.picture %>" height="300" style="object-fit: cover;" class="card-img-top" alt="...">
-              <% end %>
+
+                <%= cl_image_tag( art.photo.key, :width=>374, :height=>300, :crop=>"fill") %>
             </a>
           </div>
 
