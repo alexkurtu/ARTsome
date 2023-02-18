@@ -8,6 +8,7 @@
 <!--        <div class="button" style="position: absolute; bottom: 0; right: 0;">-->
 <!--          <button>Edit</button>-->
 <!--        </div>-->
+
           <%= cl_image_tag( booking.art.photo.key, :width=>374, :height=>300, :crop=>"fill") if !booking.art.photo.key.nil? %>
 
           <div class="centered text-white">
