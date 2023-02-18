@@ -13,12 +13,16 @@ Art.all.each do | art |
   art.photo.purge
 end
 
+Review.destroy_all
+
 puts "destroying all bookings"
 
 Booking.destroy_all
 
+
 puts "destroying all reviews"
 Review.destroy_all
+
 
 puts "destroying all arts"
 
@@ -27,7 +31,6 @@ Art.destroy_all
 puts "destroying all users"
 
 User.destroy_all
-
 
 puts "Creating user"
 
