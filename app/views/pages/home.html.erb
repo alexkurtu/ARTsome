@@ -1,9 +1,14 @@
 <div class="container">
+  <div style="width: 100%; height: 600px;"
+       data-controller="map"
+       data-map-markers-value="<%= @markers.to_json %>"
+       data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
   <div class="gallery">
-    <% @arts.each do |art| %>
+    <% @arts.each do |item| %>
       <div class="gallery-item img-h">
-        <a href="<%= art_path(art.id) %>">
-            <%= cl_image_tag art.photo.key, height: 900, crop: :fill if !art.photo.key.nil? %>
+        <a href="<%= art_path(item) %>">
+            <%= cl_image_tag item.photo.key, height: 300, crop: :fill if !item.photo.key.nil? %>
         </a>
       </div>
     <% end %>

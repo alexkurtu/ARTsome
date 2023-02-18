@@ -2,12 +2,12 @@ class BookingsController < ApplicationController
   before_action :authenticate_user!
 
   def new
-    @art = Art.find(params[:art_id])
+    set_art
     @booking = Booking.new
   end
 
   def create
-    @art = Art.find(params[:art_id])
+    set_art
     @booking = Booking.new(bookings_params)
     @booking.art = @art
     @booking.user = current_user
@@ -21,8 +21,6 @@ class BookingsController < ApplicationController
     #
     if @booking.save!
       redirect_to bookings_path, notice: "Booking was successfully created."
-      @booking.status = "Pending approval"
-
     else
       render :new, status: :unprocessable_entity
     end
@@ -30,8 +28,6 @@ class BookingsController < ApplicationController
 
   def index
     @bookings = Booking.all
-    @review = Review.new
-    @arts = Art.all
   end
 
   def show
@@ -50,8 +46,6 @@ class BookingsController < ApplicationController
     @booking.status = "Pending host validation"
     @booking.save!
     redirect_to bookings_path(@booking)
-
-
   end
 
   def destroy
@@ -63,7 +57,7 @@ class BookingsController < ApplicationController
   private
 
   def bookings_params
-    params.require(:booking).permit(:offer_date, :value, :rent_type, :starts_at, :ends_at, :shipping_address)
+    params.require(:booking).permit(:value, :rent_type, :starts_at, :ends_at, :shipping_address)
   end
 
   def set_booking
@@ -75,5 +69,3 @@ class BookingsController < ApplicationController
   end
 
 end
-
-

@@ -16,7 +16,7 @@ export default class extends Controller {
     const days = (end - start) / (24*3600*1000);
     const total = (days*this.priceValue)
     this.priceTarget.innerText = total.toFixed(2)
-    console.log("Total Price")
+    
   }
 
 

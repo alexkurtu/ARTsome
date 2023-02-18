@@ -8,7 +8,6 @@
 <!--        <div class="button" style="position: absolute; bottom: 0; right: 0;">-->
 <!--          <button>Edit</button>-->
 <!--        </div>-->
-
           <img src="<%= cl_image_tag art.photo.key if art.photo.key.nil? %>" alt="...">
           <div class="centered text-white">
 
@@ -18,7 +17,6 @@
             <p>end Booking Date: <%= booking.ends_at.strftime("%d/%m/%Y") %></p>
             <p>Price: <%= number_to_currency(booking.value, unit: "€") %></p>
           </div>
-        <% end %>
       </div>
     <% end %>
   </div>
