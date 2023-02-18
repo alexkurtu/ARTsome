@@ -18,6 +18,7 @@ class BookingsController < ApplicationController
     #     lng: @booking.longitude
     #   }
     # ]
+    #
     if @booking.save!
       redirect_to bookings_path, notice: "Booking was successfully created."
       @booking.status = "Pending approval"

@@ -1,4 +1,4 @@
-<div class="container p-5">
+  <div class="container p-5">
   <div class="gallery">
     <% @bookings.each do |booking| %>
       <div class="gallery-item-booking img-h" style="position: relative;">
@@ -8,9 +8,11 @@
 <!--        <div class="button" style="position: absolute; bottom: 0; right: 0;">-->
 <!--          <button>Edit</button>-->
 <!--        </div>-->
+
         <% unless booking.art.picture.nil? %>
           <img src="<%= booking.art.picture %>" alt="...">
           <div class="centered text-white">
+
             <h1>Booking Information</h1>
             <p>Artwork Title: <%= booking.art.title %></p>
             <p>start Booking Date: <%= booking.starts_at.strftime("%d/%m/%Y") %></p>
