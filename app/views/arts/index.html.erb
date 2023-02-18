@@ -37,12 +37,13 @@
         <% @arts.each do |art| %>
         <div class="col">
           <div class="card shadow-sm">
-          <div class="view overlay zoom"><a href="<%= art_path(art.id) %>">
-
-            <%# <% unless art.picture.empty? %>
-              <img src="<%= art.picture %>" height="300" style="object-fit: cover;" class="card-img-top" alt="...">
-            <%# <% end %>
-            </a></div>
+          <div class="view overlay zoom">
+            <a href="<%= art_path(art.id) %>">
+              <% unless art.picture.nil? %>
+                <img src="<%= art.picture %>" height="300" style="object-fit: cover;" class="card-img-top" alt="...">
+              <% end %>
+            </a>
+          </div>
 
             <div class="card-body">
               <h5 class="card-title"><%= art.title %></h5>
