@@ -12,10 +12,13 @@ class ReviewsController < ApplicationController
     @user = current_user
     @review.user = @user
     @review.art = @art
-    if @review.save!
+    if @review.save
       redirect_to art_path(@art), notice: 'Review was successfully created.'
     else
-      render 'art/show', status: :unprocessable_entity
+      flash[:alert] = "Something went wrong."
+
+      render 'arts/show', status: :unprocessable_entity
+
     end
   end
 

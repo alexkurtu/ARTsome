@@ -8,8 +8,10 @@
 <!--        <div class="button" style="position: absolute; bottom: 0; right: 0;">-->
 <!--          <button>Edit</button>-->
 <!--        </div>-->
+
         <img style= "<%= cl_image_tag booking.art.photo.key, height: 300, crop: :fill %>">
         <div class="centered text-white">
+
             <h1>Booking Information</h1>
             <p>Artwork Title: <%= booking.art.title %></p>
             <p>start Booking Date: <%= booking.starts_at.strftime("%d/%m/%Y") %></p>
